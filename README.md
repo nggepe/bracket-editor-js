@@ -1,7 +1,7 @@
 # bracket-editor-js
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/nggepe/bracket-editor-js/logo.png" height="200" alt="Bracket Editor" />
+  <img src="https://raw.githubusercontent.com/nggepe/bracket-editor-js/main/logo.png" height="200" alt="Bracket Editor Js" />
 </p>
 
 # in dev
