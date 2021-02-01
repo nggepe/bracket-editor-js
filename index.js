@@ -149,4 +149,25 @@ function bracketReplace(text, word, opentag, openlength, closelength, closetag) 
   return text.replace(word, opentag + word.substring(openlength, word.length - closelength) + closetag);
 }
 
-module.exports = bracketEditor;
+module.exports = {
+  bracketEditorConverter: ({ bracket, callback, data }) => {
+    require('./bracket-editor-converter').convert({ bracket: bracket, callback: callback, data: data })
+  },
+  bracketEditor: ({ elEditor,
+    elOutput,
+    bracket,
+    button,
+    textareaClass,
+    textareaStyle,
+    callbackValue, }) => {
+    bracketEditor({
+      elEditor: elEditor,
+      elOutput: elOutput,
+      bracket: bracket,
+      button: button,
+      textareaClass: textareaClass,
+      textareaStyle: textareaStyle,
+      callbackValue: callbackValue
+    })
+  },
+};

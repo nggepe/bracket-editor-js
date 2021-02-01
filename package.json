@@ -1,19 +1,23 @@
 {
-  "name": "bracket-editor-js",
+  "name": "gp-bracket-editor-js",
   "contributors": ["Gilang Pratama"],
   "version": "1.0.0",
   "description": "A dynamic bracket editor for javascript",
   "main": "index.js",
+  "bin": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nggepe/bracket-editor-js.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "bracket editor",
+    "bracket editor by gilang pratama"
+  ],
+  "author": "Gilang Pratama",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/nggepe/bracket-editor-js/issues"
   },
