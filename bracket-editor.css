@@ -1,0 +1,21 @@
+.gp-text-editor{
+  width: 100%;
+  min-height: 250px;
+  text-decoration: none;
+}
+
+.gp-text-editor:focus{
+  outline: none;
+}
+
+.btn-b-editor{
+  margin: 5px;
+  background: #007ced;
+  color: white;
+  outline: none;
+  border: none;
+}
+.btn-b-editor:hover{
+  cursor: pointer;
+  background: #00c1ed;
+}
