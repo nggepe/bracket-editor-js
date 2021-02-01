@@ -150,8 +150,11 @@ function bracketReplace(text, word, opentag, openlength, closelength, closetag) 
 }
 
 module.exports = {
-  bracketEditorConverter: ({ bracket, callback, data }) => {
-    require('./bracket-editor-converter').convert({ bracket: bracket, callback: callback, data: data })
+  convertCallback: ({ bracket, callback, data }) => {
+    require('./bracket-editor-converter').convertCallback({ bracket: bracket, callback: callback, data: data })
+  },
+  convert: ({ bracket, data }) => {
+    return require('./bracket-editor-converter').convert({ bracket: bracket, data: data })
   },
   bracketEditor: ({ elEditor,
     elOutput,
