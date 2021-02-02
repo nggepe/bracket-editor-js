@@ -13,3 +13,5 @@
 </p>
 
 A new javascript package project for rich text editor
+
+this package still need more update.
