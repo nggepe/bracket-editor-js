@@ -12,11 +12,6 @@
   <a href="https://github.com/nggepe/bracket-editor-js"><img src="https://img.shields.io/github/forks/nggepe/bracket-editor-js.svg?style=flat&logo=github&colorB=blue&label=forks" alt="Fork on Github"></a>
 </p>
 
-<<<<<<< HEAD
-A new javascript package project for rich text editor
-
-this package still need more update.
-=======
 # What is this?
 
 This is a text editor with bracket that you can use to format your text to be an html and css styling.
@@ -32,4 +27,3 @@ This is a text editor with bracket that you can use to format your text to be an
     you can use <code>npm install gp-bracket-editor-js</code> and import it as well.
     </li>
   </ul>
->>>>>>> dev
