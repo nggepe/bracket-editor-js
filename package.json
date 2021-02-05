@@ -1,7 +1,9 @@
 {
   "name": "gp-bracket-editor-js",
-  "contributors": ["Gilang Pratama"],
-  "version": "1.0.1",
+  "contributors": [
+    "Gilang Pratama"
+  ],
+  "version": "1.1.2",
   "description": "A dynamic bracket editor for javascript",
   "main": "index.js",
   "bin": "index.js",
@@ -24,5 +26,6 @@
   "publishConfig": {
     "registry": "https://github.com/nggepe/bracket-editor-js/issues"
   },
-  "homepage": "https://github.com/nggepe/bracket-editor-js#readme"
+  "homepage": "https://github.com/nggepe/bracket-editor-js#readme",
+  "dependencies": {}
 }
