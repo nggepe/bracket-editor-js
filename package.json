@@ -3,7 +3,7 @@
   "contributors": [
     "Gilang Pratama"
   ],
-  "version": "1.0.1",
+  "version": "1.1.2",
   "description": "A dynamic bracket editor for javascript",
   "main": "index.js",
   "bin": "index.js",
