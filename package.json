@@ -1,5 +1,5 @@
 {
-  "name": "gp-bracket-editor-js",
+  "name": "@nggepe/gp-bracket-editor-js",
   "contributors": [
     "Gilang Pratama"
   ],
@@ -22,9 +22,6 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/nggepe/bracket-editor-js/issues"
-  },
-  "publishConfig": {
-    "registry": "https://github.com/nggepe/bracket-editor-js/issues"
   },
   "homepage": "https://github.com/nggepe/bracket-editor-js#readme",
   "dependencies": {}
