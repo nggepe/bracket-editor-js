@@ -1,0 +1,78 @@
+.gp-text-editor {
+  width: 100%;
+  min-height: 250px;
+  text-decoration: none;
+}
+
+.gp-text-editor:focus {
+  outline: none;
+}
+
+.gpbeij-image-form {
+  display: none;
+  transition: 0.5s;
+}
+
+.gpbeij-image-form.show {
+  display: inline-block;
+  transition: 0.5s;
+}
+
+.gpbeij-image-form input {
+  outline: none;
+}
+
+.btn-b-editor {
+  margin: 5px;
+  background: #007ced;
+  color: white;
+  outline: none;
+  border: none;
+  padding: 5px 10px;
+}
+
+.btn-b-editor::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #F5F5F5;
+  opacity: 1;
+  /* Firefox */
+}
+
+.btn-b-editor:hover {
+  cursor: pointer;
+  background: #00c1ed;
+}
+
+#gp-textarea {
+  background-blend-mode: multiply, multiply, normal, normal;
+  background-color: #772953;
+  background-image: linear-gradient(to bottom left, rgba(119, 41, 83, 0.16) 0, rgba(119, 41, 83, 0.16) 49.9%, transparent 50%), linear-gradient(to bottom right, rgba(228, 228, 228, 0.5) 0, rgba(228, 228, 228, 0.5) 49.9%, transparent 50%), linear-gradient(to top left, #585858 0%, #404040 49.3%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 100%), linear-gradient(-89deg, #353535 0%, #4a4a4a 42%, #3c3c3c 94%);
+  padding: 20px 10px;
+}
+
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+.custom-file-input::before {
+  content: 'Select a file';
+  display: inline-block;
+  background: linear-gradient(top, #00c1ed, #00c1ed);
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 10px;
+}
+
+.custom-file-input:hover::before {
+  border-color: black;
+}
+
+.custom-file-input:active::before {
+  background: -webkit-linear-gradient(top, #00c1ed, #00c1ed);
+}

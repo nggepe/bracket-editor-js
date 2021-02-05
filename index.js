@@ -1,168 +1,79 @@
-var selectionStart = 0;
-var selectionEnd = 0;
-
-/**
- * you can check the param is here
- * 
- */
-function bracketEditor({
-  elEditor,
-  elOutput,
-  bracket,
-  button,
-  textareaClass,
-  textareaStyle,
-  callbackValue,
-}) {
-  if (bracketEditorChecker(elEditor, elOutput, bracket) === true) {
-    generateElement(button, elEditor, bracket, elOutput, textareaClass, textareaStyle, callbackValue);
-    const el = document.getElementById('gpeditor');
-    el.addEventListener("keyup", function (e) {
-      bracketEditorConverter(bracket, elOutput, (defaults, generated) => {
-        callbackValue(defaults, generated)
-      });
-    });
-    el.addEventListener("keydown", function (e) {
-
-      if (e.code === 'Tab') { // tab was pressed
-        e.preventDefault();
-        if (selectionStart === selectionEnd) {
-          el.value = el.value.substring(0, selectionStart) + "\t" + el.value.substring(selectionEnd);
-          el.setSelectionRange(selectionStart + 1, selectionEnd + 1);
-        }
-        else {
-          var sentences = el.value.substring(0, selectionStart);
-          var sentencesArr = el.value.substring(selectionStart, selectionEnd).split("\n");
-          var sentencecount = 0;
-          sentencesArr.forEach(sentence => {
-            if (sentencecount < sentencesArr.length) sentences += "\t" + sentence + "\n";
-            else sentences += "\t" + sentences;
-            sentencecount += 1;
-          });
-          el.value = sentences;
-          el.setSelectionRange(selectionStart + 1, selectionEnd + sentencesArr.length);
-
-        }
-      }
-
-      bracketEditorConverter(bracket, elOutput, (defaults, generated) => {
-        callbackValue(defaults, generated)
-      });
-    });
-    el.addEventListener("onchange", function () {
-      bracketEditorConverter(bracket, elOutput, (defaults, generated) => {
-        callbackValue(defaults, generated)
-      });
-    });
-  }
-}
-
-function bracketEditorChecker(elEditor, elOutput, bracket) {
-  var checker = "";
-  if (elEditor == null) checker += "This package need an ID to nested textarea\n";
-  if (elOutput == null) checker += "This package need an ID to nested the output";
-  if (bracket == null) checker += "What do you need? we can not understand why you install it! If you really need this package, please! set your bracket!";
-
-  if (checker === "") return true;
-  else return false;
-}
-
-function generateElement(button, elEditor, bracket, elOutput, textareaClass, textAreaStyle, callback) {
-  const el = document.getElementById(elEditor);
-  var html = "";
-  for (let i = 0; i < button.length; i++) {
-    html += `<button style="${button[i]['style']}" class="${button[i]['class']}" id="gp-btn-editor-${i}">${button[i]['innerhtml']}</button>`;
-  }
-  html += `<textarea id="gpeditor" class="${textareaClass}" style="${typeof textareaStyle !== 'undefined' ? textAreaStyle : 'width: 100 %'} "></textarea>`;
-  el.innerHTML = html;
-  eventsHandler(button.length, bracket, elOutput, callback)
-}
-
-function eventsHandler(length, bracket, elOutput, callback) {
-  const elContent = document.getElementById("gpeditor");
-  elContent.onmouseup = elContent.onkeyup = elContent.onselectionchange = function () {
-    if (window.getSelection) {
-      selectionStart = document.getElementById("gpeditor").selectionStart
-      selectionEnd = document.getElementById("gpeditor").selectionEnd
-    }
-  }
-
-  for (let i = 0; i < length; i++) {
-    const openbracket = bracket[i]['open'];
-    const closebracket = bracket[i]['close'];
-    const openlength = openbracket.replace(/\\/g, "").length;
-
-    refactor(elContent, openbracket, closebracket, openlength, bracket, elOutput, i, callback)
-  }
-}
-
-function refactor(elContent, openbracket, closebracket, openlength, bracket, elOutput, i, callback) {
-  document.getElementById("gp-btn-editor-" + i).addEventListener("click", (e) => {
-
-    var text = document.getElementById("gpeditor").value;
-    elContent.value = text.substring(0, selectionStart) + "" +
-      openbracket.replace(/\\/g, "") + text.substring(selectionStart, selectionEnd) + closebracket.replace(/\\/g, "") + "" +
-      text.substring(selectionEnd);
-    elContent.focus();
-    var ready = selectionStart + openlength;
-    var stop = selectionEnd + openlength;
-
-
-    elContent.setSelectionRange(ready, stop);
-    bracketEditorConverter(bracket, elOutput, callback);
-
-    selectionStart += openlength;
-    selectionEnd += openlength;
-  })
-}
-
-function bracketEditorConverter(bracket, elOutput, callback) {
-  var data = document.getElementById("gpeditor").value;
-
-  var text = data.replace(/</g, "&lt;");
-  text = text.replace(/>/g, "&gt;");
-  text = text.replace(/\t/g, "&nbsp;&nbsp;&nbsp;&nbsp;");
-  text = text.replace(/\n/g, "<br/>");
-
-  for (let i = 0; i < bracket.length; i++) {
-    const openbracket = bracket[i]['open'];
-    const closebracket = bracket[i]['close'];
-    const opentag = bracket[i]['opentag'];
-    const closetag = bracket[i]['closetag'];
-
-    const openlength = openbracket.replace(/\\/g, "").length;
-    const closelength = closebracket.replace(/\\/g, "").length;
-
-    var replace = `${openbracket}[^\\s](.*?)[^\\s]${closebracket}`;
-    var regex = new RegExp(replace, "g");
-    const newMatch = text.match(regex);
-    if (newMatch != null)
-      for (let i = 0; i < newMatch.length; i++) {
-        text = text = bracketReplace(text, newMatch[i], opentag, openlength, closelength, closetag);
-      }
-  }
-  document.getElementById(elOutput).innerHTML = text;
-  if (typeof callback !== 'undefined') callback(data, text)
-}
-
-function bracketReplace(text, word, opentag, openlength, closelength, closetag) {
-  return text.replace(word, opentag + word.substring(openlength, word.length - closelength) + closetag);
-}
+const bracketEditor = require('./src/bracket-editor')
 
 module.exports = {
   convertCallback: ({ bracket, callback, data }) => {
-    require('./bracket-editor-converter').convertCallback({ bracket: bracket, callback: callback, data: data })
+    require('./src/bracket-editor-converter').convertCallback({ bracket: bracket, callback: callback, data: data })
   },
   convert: ({ bracket, data }) => {
-    return require('./bracket-editor-converter').convert({ bracket: bracket, data: data })
+    return require('./src/bracket-editor-converter').convert({ bracket: bracket, data: data })
   },
-  bracketEditor: ({ elEditor,
-    elOutput,
-    bracket,
-    button,
-    textareaClass,
-    textareaStyle,
-    callbackValue, }) => {
+  bracketEditor: ({
+    elEditor = "gp-textarea",
+    elOutput = "gp-text-output",
+    bracket = [
+      {
+        open: "\\*\\*",
+        close: "\\*\\*",
+        opentag: "<b>",
+        closetag: "</b>"
+      },
+      {
+        open: "\\*",
+        close: "\\*",
+        opentag: "<i>",
+        closetag: "</i>"
+      },
+      {
+        open: "```",
+        close: "```",
+        opentag: "<pre style='background: rgba(255,255,255,0.4);'><code>",
+        closetag: "</code></pre>",
+      },
+      {
+        open: "`",
+        close: "`",
+        opentag: "<code>",
+        closetag: "</code>"
+      },
+      {
+        open: "--",
+        close: "--",
+        opentag: "<center>",
+        closetag: "</center>"
+      }
+    ],
+    button = [
+      {
+        innerhtml: "<b>B</b>",
+        class: "btn-b-editor",
+      },
+      {
+        innerhtml: "I",
+        class: "btn-b-editor",
+      },
+      {
+        innerhtml: "{<>}",
+        class: "btn-b-editor",
+      },
+      {
+        innerhtml: "<>",
+        class: "btn-b-editor",
+      },
+      {
+        innerhtml: `<svg version="1.1" fill="#F2F2F2" width="12px" height="12px" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 426.667 426.667" style="enable-background:new 0 0 426.667 426.667;" xml:space="preserve">	<g>		<rect x="85.333" y="320" width="256" height="42.667"/>	</g>	<g>		<rect x="64" y="149.333" width="298.667" height="42.667"/>	</g>	<g>		<rect y="64" width="426.667" height="42.667"/>	</g>	<g>		<rect x="21.333" y="234.667" width="384" height="42.667"/>	</g></svg>`,
+        class: "btn-b-editor",
+      },
+    ],
+    textareaClass = "gp-text-editor",
+    textareaStyle = "width: calc(99%); margin-right: 20px;",
+    callbackValue = function (defaults, generated) { },
+    imageSupport = {
+      btnclass: "btn-b-editor",
+      btnstyle: "",
+      innerHTML: `<svg fill="#f2f2f2" id="bold" enable-background="new 0 0 24 24" height="12" viewBox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg"><g><g><path d="m6.25 19.5c-1.601 0-3.025-1.025-3.542-2.551l-.035-.115c-.122-.404-.173-.744-.173-1.084v-6.818l-2.426 8.098c-.312 1.191.399 2.426 1.592 2.755l15.463 4.141c.193.05.386.074.576.074.996 0 1.906-.661 2.161-1.635l.901-2.865z"/></g><path d="m9 9c1.103 0 2-.897 2-2s-.897-2-2-2-2 .897-2 2 .897 2 2 2z"/></g><path d="m21.5 2h-15c-1.378 0-2.5 1.122-2.5 2.5v11c0 1.378 1.122 2.5 2.5 2.5h15c1.378 0 2.5-1.122 2.5-2.5v-11c0-1.378-1.122-2.5-2.5-2.5zm-15 2h15c.276 0 .5.224.5.5v7.099l-3.159-3.686c-.335-.393-.82-.603-1.341-.615-.518.003-1.004.233-1.336.631l-3.714 4.458-1.21-1.207c-.684-.684-1.797-.684-2.48 0l-2.76 2.759v-9.439c0-.276.224-.5.5-.5z"/></svg>`,
+      fileHandler: (file) => console.log(file)
+    },
+  }) => {
     bracketEditor({
       elEditor: elEditor,
       elOutput: elOutput,
@@ -170,7 +81,14 @@ module.exports = {
       button: button,
       textareaClass: textareaClass,
       textareaStyle: textareaStyle,
-      callbackValue: callbackValue
+      callbackValue: callbackValue,
+      imageSupport: {
+        btnclass: typeof imageSupport.btnclass === "undefined" ? "btn-b-editor" : imageSupport.btnclass,
+        btnstyle: typeof imageSupport.btnstyle === "undefined" ? "" : imageSupport.btnstyle,
+        innerHTML: typeof imageSupport.innerHTML === "undefined" ? `<svg fill="#f2f2f2" id="bold" enable-background="new 0 0 24 24" height="12" viewBox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg"><g><g><path d="m6.25 19.5c-1.601 0-3.025-1.025-3.542-2.551l-.035-.115c-.122-.404-.173-.744-.173-1.084v-6.818l-2.426 8.098c-.312 1.191.399 2.426 1.592 2.755l15.463 4.141c.193.05.386.074.576.074.996 0 1.906-.661 2.161-1.635l.901-2.865z"/></g><path d="m9 9c1.103 0 2-.897 2-2s-.897-2-2-2-2 .897-2 2 .897 2 2 2z"/></g><path d="m21.5 2h-15c-1.378 0-2.5 1.122-2.5 2.5v11c0 1.378 1.122 2.5 2.5 2.5h15c1.378 0 2.5-1.122 2.5-2.5v-11c0-1.378-1.122-2.5-2.5-2.5zm-15 2h15c.276 0 .5.224.5.5v7.099l-3.159-3.686c-.335-.393-.82-.603-1.341-.615-.518.003-1.004.233-1.336.631l-3.714 4.458-1.21-1.207c-.684-.684-1.797-.684-2.48 0l-2.76 2.759v-9.439c0-.276.224-.5.5-.5z"/></svg>` : imageSupport.innerHTML,
+        fileHandler: typeof imageSupport.fileHandler === "undefined" ? file => console.log(file, "ini default") : imageSupport.fileHandler
+      },
     })
   },
+  seturl: (url) => { require('./src/bracket-editor-image-send')(url) }
 };
