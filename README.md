@@ -1,7 +1,7 @@
 # bracket-editor-js
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/nggepe/bracket-editor-js/main/docs/logo.png" height="200" alt="Bracket Editor Js" />
+  <img src="https://raw.githubusercontent.com/nggepe/bracket-editor-js/dev/docs/logo.png" height="200" alt="Bracket Editor Js" />
 </p>
 
 # in dev
@@ -17,7 +17,7 @@
 This is a text editor with bracket that you can use to format your text to be an html and css styling.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/nggepe/bracket-editor-js/main/docs/demo.gif" height="200" alt="A demo for you" />
+  <img src="https://raw.githubusercontent.com/nggepe/bracket-editor-js/dev/docs/demo.gif" height="200" alt="A demo for you" />
 </p>
 
 ## how to implement it?
