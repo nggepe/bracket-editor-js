@@ -1,4 +1,7 @@
-function bracketEditorConverter(bracket, elOutput, callback, { imageSupport }) {
+function bracketEditorConverter(bracket, elOutput, callback, { imageSupport, tag = {
+  hashTag: { active: true, class: "gp-editor-tag", style: "", ontap: () => { } },
+  atTag: { active: true, class: "gp-editor-tag", style: "", ontap: () => { } },
+} }) {
   var data = document.getElementById("gpeditor").value;
 
   var text = data.replace(/</g, "&lt;");
@@ -26,9 +29,39 @@ function bracketEditorConverter(bracket, elOutput, callback, { imageSupport }) {
   if (imageSupport !== null && typeof imageSupport !== "undefined") {
     text = text.replace(/\[img[ ]((https?|ftp|file):\/\/[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|])[ ](\w*.)\]?/gi, "<img src='$1' width='$3'/>")
   }
+  if (tag.atTag.active === true) {
+    text = text.replace(/(@\w+)/g, `<span class="at-tag-event ${tag.atTag.class}" data-name="$1" style="${tag.atTag.style}">$1</span>`)
+  }
+  if (tag.hashTag.active === true) {
+    text = text.replace(/(#\w+)/g, `<span class="${tag.hashTag.class}" style="${tag.hashTag.style}">$1</span>`)
+    if (typeof tag.hashTag.ontap !== 'undefined') { }
+  }
+
   document.getElementById(elOutput).innerHTML = text;
+
   if (typeof callback !== 'undefined') callback(data, text)
+
+  if (typeof tag.atTag.ontap !== 'undefined') {
+    const tagEl = document.getElementsByClassName("at-tag-event")
+    for (let i = 0; i < tagEl.length; i++) {
+      console.log(tagEl[i].textContent)
+      let tagtext = tagEl[i].textContent
+      tagEl[i].addEventListener('click', tag.atTag.ontap(tagtext))
+    }
+  }
+
+  if (typeof tag.hashTag.ontap !== 'undefined') {
+    const tagEl = document.getElementsByClassName("at-tag-event")
+    for (let i = 0; i < tagEl.length; i++) {
+      console.log(tagEl[i].textContent)
+      let tagtext = tagEl[i].textContent
+      tagEl[i].addEventListener('click', tag.hashTag.ontap(tagtext))
+    }
+  }
+
+  // return { data, text }
 }
+
 
 function bracketReplace(text, word, opentag, openlength, closelength, closetag) {
   return text.replace(word, opentag + word.substring(openlength, word.length - closelength) + closetag);
