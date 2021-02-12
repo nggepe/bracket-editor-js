@@ -183,13 +183,5 @@ module.exports = {
     })
   },
   seturl: (url) => { require('./src/bracket-editor-image-send')(url) },
-  keywordEditor: ({ elements = {
-    parentId: "gp-keyword-editor",
-    inputClass: "gp-keyword-input-editor",
-    inputStyle: ""
-  } }) => {
-    require('./src/keyword-editor/keyword-editor')({
-      elements,
-    })
-  }
+
 };
