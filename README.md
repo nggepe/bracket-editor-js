@@ -4,8 +4,6 @@
   <img src="https://raw.githubusercontent.com/nggepe/bracket-editor-js/dev/docs/logo.png" height="200" alt="Bracket Editor Js" />
 </p>
 
-# in dev
-
 <p align="center">
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-purple.svg" alt="License: MIT"></a>
   <a href="https://github.com/nggepe/bracket-editor-js"><img src="https://img.shields.io/github/stars/nggepe/bracket-editor-js.svg?style=flat&logo=github&colorB=deeppink&label=stars" alt="Star on Github"></a>
