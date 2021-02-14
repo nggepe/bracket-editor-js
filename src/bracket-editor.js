@@ -23,8 +23,8 @@ function bracketEditor({
     generateElement(button, elEditor, bracket, elOutput, textareaClass, textareaStyle, callbackValue, imageSupport, tag);
     const el = document.getElementById('gpeditor');
     el.addEventListener("keyup", function (e) {
-      bracketEditorConverter(bracket, elOutput, (defaults, generated) => {
-        callbackValue(defaults, generated)
+      bracketEditorConverter(bracket, elOutput, (defaults, generated, hashTag, atTag) => {
+        callbackValue(defaults, generated, hashTag, atTag)
       }, { imageSupport: imageSupport, tag: tag });
     });
     el.addEventListener("keydown", function (e) {
@@ -50,13 +50,13 @@ function bracketEditor({
         }
       }
 
-      bracketEditorConverter(bracket, elOutput, (defaults, generated) => {
-        callbackValue(defaults, generated)
+      bracketEditorConverter(bracket, elOutput, (defaults, generated, hashTag, atTag) => {
+        callbackValue(defaults, generated, hashTag, atTag)
       }, { imageSupport: imageSupport, tag: tag });
     });
     el.addEventListener("onchange", function () {
-      bracketEditorConverter(bracket, elOutput, (defaults, generated) => {
-        callbackValue(defaults, generated)
+      bracketEditorConverter(bracket, elOutput, (defaults, generated, hashTag, atTag) => {
+        callbackValue(defaults, generated, hashTag, atTag)
       }, { imageSupport: imageSupport, tag: tag });
     });
   }

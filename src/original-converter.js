@@ -37,14 +37,17 @@ function bracketEditorConverter(bracket, elOutput, callback, { imageSupport, tag
     if (typeof tag.hashTag.ontap !== 'undefined') { }
   }
 
+  var hashTag = text.match(/(#\w+)/g)
+  var atTag = text.match(/(@\w+)/g)
+
   document.getElementById(elOutput).innerHTML = text;
 
-  if (typeof callback !== 'undefined') callback(data, text)
+  if (typeof callback !== 'undefined') callback(data, text, hashTag, atTag)
 
   if (typeof tag.atTag.ontap !== 'undefined') {
     const tagEl = document.getElementsByClassName("at-tag-event")
     for (let i = 0; i < tagEl.length; i++) {
-      console.log(tagEl[i].textContent)
+      // console.log(tagEl[i].textContent)
       let tagtext = tagEl[i].textContent
       tagEl[i].addEventListener('click', tag.atTag.ontap(tagtext))
     }
@@ -53,7 +56,7 @@ function bracketEditorConverter(bracket, elOutput, callback, { imageSupport, tag
   if (typeof tag.hashTag.ontap !== 'undefined') {
     const tagEl = document.getElementsByClassName("at-tag-event")
     for (let i = 0; i < tagEl.length; i++) {
-      console.log(tagEl[i].textContent)
+      // console.log(tagEl[i].textContent)
       let tagtext = tagEl[i].textContent
       tagEl[i].addEventListener('click', tag.hashTag.ontap(tagtext))
     }

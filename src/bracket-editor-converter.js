@@ -83,8 +83,9 @@ module.exports = {
       text = text.replace(/(#\w+)/g, `<span class="${tag.hashTag.class}" style="${tag.hashTag.style}">$1</span>`)
       if (typeof tag.hashTag.ontap !== 'undefined') { }
     }
-
-    if (typeof callback !== 'undefined') callback(data, text)
+    var hashTag = text.match(/(#\w+)/g)
+    var atTag = text.match(/(@\w+)/g)
+    if (typeof callback !== 'undefined') callback(data, text, hashTag, atTag)
 
     if (typeof tag.atTag.ontap !== 'undefined') {
       const tagEl = document.getElementsByClassName("at-tag-event")
