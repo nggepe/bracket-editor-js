@@ -48,6 +48,41 @@ For now, this package only support on nodejs we have to update more feature unti
   </li>
   <li>
     If you are using react js. You can use <code>useEffect</code> to reduce the render.
+```
+import { useEffect } from 'react'
+import { Grid } from '@material-ui/core'
+import '../../utils/libs/bracket-editor-js/src/style.css'
 
+const bracketEditor = require('../../utils/libs/bracket-editor-js')
+const settingEditor = bracketEditor.defaultSetting
+
+export default function Draft() {
+
+  useEffect(() => {
+    bracketEditor.editor({
+      ...settingEditor, callback(defaultText, generatedText) {
+        document.getElementById('gp-editor-output').innerHTML = generatedText
+      }, others: {
+        ...settingEditor.others, img: {
+          ...settingEditor.others.img, onImageInputChange: (file) => {
+            console.log(file)
+          }
+        }
+      }
+    })
+  })
+  return (<>
+    <Grid container spacing={5}>
+      <Grid item xs={12} md={6}>
+        <div id="gp-editor"></div>
+      </Grid>
+      <Grid item xs={12} md={6}>
+        <div id="gp-editor-output" style={{ color: "#FFF" }}></div>
+      </Grid>
+    </Grid>
+
+  </>)
+}
+```
   </li>
 </ul>
