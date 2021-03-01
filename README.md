@@ -46,4 +46,14 @@ For now, this package only support on nodejs we have to update more feature unti
   <li>
     import: <code>const editor = require('gp-bracket-editor-js')</code>
   </li>
+  <li>
+    If you are using react js. You can use <code>useEffect</code> to reduce the render.
+    <pre>
+      <code>
+        const bracketEditor = require('../../utils/libs/bracket-editor-js')
+        const settingEditor = bracketEditor.defaultSetting
+      </code>
+    </pre>
+
+  </ul>
 </ul>
