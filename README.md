@@ -48,9 +48,22 @@ For now, this package only support on nodejs we have to update more feature unti
   </li>
   <li>
     If you are using react js. You can use <code>useEffect</code> to reduce the render.
-```
+<pre><code>
 const bracketEditor = require('../../utils/libs/bracket-editor-js')
 const settingEditor = bracketEditor.defaultSetting
-```
+useEffect(() => {
+  bracketEditor.editor({
+    ...settingEditor, callback(defaultText, generatedText) {
+      document.getElementById('gp-editor-output').innerHTML = generatedText
+    }, others: {
+      ...settingEditor.others, img: {
+        ...settingEditor.others.img, onImageInputChange: (file) => {
+          console.log(file)
+        }
+      }
+    }
+  })
+})
+</code></pre>
   </li>
 </ul>
