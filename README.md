@@ -20,10 +20,27 @@ This is a text editor with bracket that you can use to format your text to be an
   <img src="https://raw.githubusercontent.com/nggepe/bracket-editor-js/dev/docs/demo.gif" height="200" alt="A demo for you" />
 </p>
 
-## how to implement it?
+## features
+
+  <ul>
+    <li>
+      normal brackets
+    </li>
+    <li>
+      single code
+    </li>
+    <li>
+      code block
+    </li>
+    <li>
+      simple code highlight
+    </li>
+  </ul>
+
+## Installing
 
   <ul>
     <li>For now, this package only support on nodejs we have to update more feature untill this package is ready to compile in javascript browser natively, so just follow it to see what we will do and release soon.
-    you can use <code>npm install gp-bracket-editor-js</code> and import it as well.
+    you can use <code>npm install gp-bracket-editor-js</code> to install it.
     </li>
   </ul>
