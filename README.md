@@ -50,6 +50,8 @@ For now, this package only support on nodejs we have to update more feature unti
     If you are using react js. You can use <code>useEffect</code> to reduce the render.
   </li>
 </ul>
+
+
 ```javascript
 const bracketEditor = require('../../utils/libs/bracket-editor-js')
 const settingEditor = bracketEditor.defaultSetting
