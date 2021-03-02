@@ -69,3 +69,8 @@ useEffect(() => {
   })
 })
 ```
+<ul>
+  <li>
+    This package will create a textarea inside the element id named "gp-editor", so you have to provide some html element which have `gp-editor` id
+  </li>
+</ul>
