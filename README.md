@@ -77,7 +77,7 @@ useEffect(() => {
 
 ## Properties
 
-<table>
+<table width="100%">
   <tr>
     <th>Prop Name</th>
     <th>Description</th>
@@ -93,42 +93,46 @@ useEffect(() => {
     <td>List of BracketData </td>
     <td>
     
-    ```javascript
-      [{
-        {
-        open: "=b ",
-        close: " b=",
-        openTag: "<b>",
-        closeTag: "</b>",
-        btn: {
-          active: true,
-          /**element id */
-          id: "btn-bold",
-          /**element style */
-          style: "",
-          /**element class */
-          className: "",
-          /**elment children */
-          innerHTML: icons.bold,
-        }
-      },
-      {
-        open: "=i ",
-        close: " i=",
-        openTag: "<i>",
-        closeTag: "</i>",
-        btn: {
-          active: true,
-          id: "btn-italic",
-          style: "",
-          className: "",
-          innerHTML: icons.italic,
-        }
-      }, //and more data
-      ]
-    ```
-    
-    
+```javascript
+[{
+  {
+  open: "=b ",
+  close: " b=",
+  openTag: "<b>",
+  closeTag: "</b>",
+  btn: {
+    active: true,
+    /**element id */
+    id: "btn-bold",
+    /**element style */
+    style: "",
+    /**element class */
+    className: "",
+    /**elment children */
+    innerHTML: icons.bold,
+  }
+},
+{
+  open: "=i ",
+  close: " i=",
+  openTag: "<i>",
+  closeTag: "</i>",
+  btn: {
+    active: true,
+    id: "btn-italic",
+    style: "",
+    className: "",
+    innerHTML: icons.italic,
+  }
+}, //and more data
+]
+```
     </td>
+  </tr>
+  
+  <tr>
+  <td>
+    others
+  </td>
   </tr>
 </table>
