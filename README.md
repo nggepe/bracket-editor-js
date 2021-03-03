@@ -91,43 +91,7 @@ useEffect(() => {
   <tr>
     <td>bracket</td>
     <td>List of BracketData </td>
-    <td>
-    
-```javascript
-[{
-  {
-  open: "=b ",
-  close: " b=",
-  openTag: "<b>",
-  closeTag: "</b>",
-  btn: {
-    active: true,
-    /**element id */
-    id: "btn-bold",
-    /**element style */
-    style: "",
-    /**element class */
-    className: "",
-    /**elment children */
-    innerHTML: icons.bold,
-  }
-},
-{
-  open: "=i ",
-  close: " i=",
-  openTag: "<i>",
-  closeTag: "</i>",
-  btn: {
-    active: true,
-    id: "btn-italic",
-    style: "",
-    className: "",
-    innerHTML: icons.italic,
-  }
-}, //and more data
-]
-```
-    </td>
+    <td>see <a href="https://github.com/nggepe/bracket-editor-js/blob/ed13b9eee930d140e34802f22166082b4edce386/src/default-setting.js#L7">here</a></td>
   </tr>
   
   <tr>
