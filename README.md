@@ -74,3 +74,23 @@ useEffect(() => {
     This package will create a textarea inside the element id named "gp-editor", so you have to provide some html element which have `gp-editor` id
   </li>
 </ul>
+
+## Properties
+
+<table>
+  <tr>
+    <th>Prop Name</th>
+    <th>Description</th>
+    <th>Default Setting</th>
+  </tr>
+  <tr>
+    <td>element</td>
+    <td>It is the id to nested the <code>textarea</code> </td>
+    <td>"gp-editor"</td>
+  </tr>
+  <tr>
+    <td>bracket</td>
+    <td>List of BracketData </td>
+    <td>some default BracketData</td>
+  </tr>
+</table>
