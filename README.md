@@ -98,5 +98,12 @@ useEffect(() => {
   <td>
     others
   </td>
+  <td>There are another features that cannot be dynamic bracket, these are `img`, `codeBlock`, `hashTag` and `atTag`, so we place it here</td>
+  <td>Cehckout <a href="https://github.com/nggepe/bracket-editor-js/blob/aea79b6527d79c6e5c06369f0ee59b5704a3f760/src/default-setting.js#L149">here</a></td>
+  </tr>
+  <tr>
+  <td>callback</td>
+  <td>The text will be auto generated with some events. So we provide to params at the callback, these are defaultText and generatedText</td>
+  <td>checkout <a href="https://github.com/nggepe/bracket-editor-js/blob/aea79b6527d79c6e5c06369f0ee59b5704a3f760/src/default-setting.js#L184">here</td>
   </tr>
 </table>
