@@ -91,6 +91,150 @@ useEffect(() => {
   <tr>
     <td>bracket</td>
     <td>List of BracketData </td>
-    <td>some default BracketData</td>
+    <td>
+    
+    ```javascript
+    {
+        /**open bracket */
+        open: "=b ",
+        /**close bracket */
+        close: " b=",
+        /**open tag, you can use your `html` tag*/
+        openTag: "<b>",
+        /**close tag, you can use your `html` tag */
+        closeTag: "</b>",
+        /**btn configuration, it's an `object that have properties: `active` bool, `id` string, `style` string, `className` string, `innerHTML` string */
+        btn: {
+          /**this is show or hide button, `true` is show, `false` is hide */
+          active: true,
+          /**element id */
+          id: "btn-bold",
+          /**element style */
+          style: "",
+          /**element class */
+          className: "",
+          /**elment children */
+          innerHTML: icons.bold,
+        }
+      },
+      {
+        open: "=i ",
+        close: " i=",
+        openTag: "<i>",
+        closeTag: "</i>",
+        btn: {
+          active: true,
+          id: "btn-italic",
+          style: "",
+          className: "",
+          innerHTML: icons.italic,
+        }
+      }, {
+        open: "=u ",
+        close: " u=",
+        openTag: "<u>",
+        closeTag: "</u>",
+        btn: {
+          active: true,
+          id: "btn-underline",
+          style: "",
+          className: "",
+          innerHTML: icons.underline,
+        }
+      },
+      {
+        open: "=s ",
+        close: " s=",
+        openTag: "<del>",
+        closeTag: "</del>",
+        btn: {
+          active: true,
+          id: "btn-stroke",
+          style: "",
+          className: "",
+          innerHTML: icons.strike,
+        }
+      },
+      {
+        open: "=h1 ",
+        close: " h1=",
+        openTag: "<h1>",
+        closeTag: "</h1>",
+        btn: {
+          active: true,
+          id: "btn-h1",
+          style: "",
+          className: "",
+          innerHTML: icons.h1,
+        }
+      },
+      {
+        open: "=h1 ",
+        close: " h1=",
+        openTag: "<h1>",
+        closeTag: "</h1>",
+        btn: {
+          active: true,
+          id: "btn-h1",
+          style: "",
+          className: "",
+          innerHTML: icons.h2,
+        }
+      },
+      {
+        open: "=l ",
+        close: " l=",
+        openTag: "<p style='text-align: left;'>",
+        closeTag: "</p>",
+        btn: {
+          active: true,
+          id: "btn-underline",
+          style: "",
+          className: "",
+          innerHTML: icons.left,
+        }
+      },
+      {
+        open: "=c ",
+        close: " c=",
+        openTag: "<center>",
+        closeTag: "</center>",
+        btn: {
+          active: true,
+          id: "btn-center",
+          style: "",
+          className: "",
+          innerHTML: icons.center,
+        }
+      },
+      {
+        open: "=r ",
+        close: " r=",
+        openTag: "<p style='text-align: right;'>",
+        closeTag: "</p>",
+        btn: {
+          active: true,
+          id: "btn-right",
+          style: "",
+          className: "",
+          innerHTML: icons.right,
+        }
+      },
+      {
+        open: "\\[code ",
+        close: " code\\]",
+        openTag: "<code>",
+        closeTag: "</code>",
+        btn: {
+          active: true,
+          id: "btn-right",
+          style: "",
+          className: "",
+          innerHTML: icons.code,
+        }
+      },
+    ```
+    
+    </td>
   </tr>
 </table>
